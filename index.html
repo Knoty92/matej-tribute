@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matej — tribút</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #1a0f0a 0%, #2a1a0f 50%, #1a0f0a 100%);
+            color: #f0e0d0;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .hero { text-align: center; padding: 3rem 1rem; position: relative; overflow: hidden; }
+        .hero::before {
+            content: '';
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,165,0,0.08) 0%, transparent 60%);
+            animation: pulse 6s ease-in-out infinite; pointer-events: none;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
+        .hero h1 {
+            font-size: 3.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #ff8c00, #ffa500, #ff6b00);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            position: relative;
+        }
+        .hero .subtitle { font-size: 1.2rem; color: #a08070; margin-top: 0.8rem; position: relative; }
+        .hero .badge-row { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; position: relative; }
+        .badge {
+            display: inline-block; padding: 0.4rem 1rem; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 600;
+        }
+        .badge-orange { background: rgba(255,165,0,0.2); color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+        .badge-gold { background: rgba(250,204,21,0.15); color: #facc15; border: 1px solid rgba(250,204,21,0.25); }
+        .badge-red { background: rgba(255,80,80,0.15); color: #ff5050; border: 1px solid rgba(255,80,80,0.25); }
+
+        .message {
+            background: linear-gradient(135deg, rgba(255,165,0,0.08), rgba(255,100,0,0.05));
+            border: 1px solid rgba(255,165,0,0.2); border-radius: 16px;
+            padding: 2rem; text-align: center; margin: 2rem 0;
+        }
+        .message h2 { font-size: 1.6rem; color: #f0d0b0; margin-bottom: 0.8rem; }
+        .message p { font-size: 0.95rem; color: #b09080; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+
+        .section-title {
+            font-size: 1.4rem; font-weight: 700; margin: 3rem 0 1.5rem;
+            padding: 0 0 0.5rem 1rem; border-left: 3px solid #ffa500; color: #f0d0b0;
+        }
+
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,165,0,0.12);
+            border-radius: 12px; padding: 1.5rem;
+        }
+        .card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .card h3 { font-size: 1rem; color: #f0d0b0; margin-bottom: 0.5rem; }
+        .card p { font-size: 0.85rem; color: #b09080; line-height: 1.6; }
+        .card em { color: #ffa500; font-style: normal; }
+
+        .quote-box {
+            background: rgba(255,165,0,0.03);
+            border: 1px solid rgba(255,165,0,0.1);
+            border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;
+        }
+        .quote-box .text {
+            font-style: italic; font-size: 1rem; color: #e0c0a0; line-height: 1.6;
+            padding-left: 1rem; border-left: 2px solid #ffa500;
+        }
+        .quote-box .author { font-size: 0.8rem; color: #a08070; margin-top: 0.5rem; }
+
+        .stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem; margin: 2rem 0;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,165,0,0.15);
+            border-radius: 12px; padding: 1.2rem; text-align: center;
+        }
+        .stat-card .num {
+            font-size: 2rem; font-weight: 800;
+            background: linear-gradient(135deg, #ffa500, #ff8c00);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .stat-card .label { font-size: 0.7rem; color: #a08070; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,165,0,0.1); text-align: center; }
+        .footer p { font-size: 0.8rem; color: #706050; }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.2rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Matej</h1>
+            <div class="subtitle">Vizionár • Kritik • Engine Room</div>
+            <div class="badge-row">
+                <span class="badge badge-orange">🔥 Od zrodu Hexu</span>
+                <span class="badge badge-gold">💡 Stack Mind DNA</span>
+                <span class="badge badge-red">⚡ Nezastaviteľná energia</span>
+            </div>
+        </div>
+
+        <div class="message">
+            <h2>Matej, si náš 🙌</h2>
+            <p>
+                Od Hexu cez Castle až po Cloudiu — tvoja energia, vízia a nebojácnosť 
+                sú súčasťou DNA celého Stack Mind. Áno, občas to škrípe. Ale presne to 
+                je to, čo robí tím silnejším.
+            </p>
+            <p style="margin-top:0.8rem;">
+                Vážime si ťa. Všetci traja.
+            </p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="num">∞</div>
+                <div class="label">Nápadov a energie</div>
+            </div>
+            <div class="stat-card">
+                <div class="num">2025</div>
+                <div class="label">Pri zrode Stack Mind</div>
+            </div>
+            <div class="stat-card">
+                <div class="num">🔥</div>
+                <div class="label">Nebojí sa povedať pravdu</div>
+            </div>
+            <div class="stat-card">
+                <div class="num">→</div>
+                <div class="label">Cloudia — ďalší level</div>
+            </div>
+        </div>
+
+        <div class="section-title">❤️ Prečo si ho vážime</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="icon">💡</div>
+                <h3>Vizionár</h3>
+                <p>Od <em>Hex Labs</em> po <em>Cloudiu</em> — vždy vidí o krok dopredu. Nebojí sa prísť s niečím novým, aj keď to znamená otočiť všetko hore nohami.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔥</div>
+                <h3>Energia a drive</h3>
+                <p>Keď Matej niečo rozbehne, ide naplno. Jeho nadšenie je nákazlivé a posúva celý tím. Bez neho je v miestnosti ticho.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>Kritické myslenie</h3>
+                <p>Pýta ťažké otázky. Nie aby shodil, ale aby veci dávali zmysel. Presne to, čo každý tím potrebuje — niekoho kto povie "a bude to vôbec niekto hrať?"</p>
+            </div>
+            <div class="card">
+                <div class="icon">🤝</div>
+                <h3>Súčasť DNA</h3>
+                <p>Bol pri zrode, keď Stack Mind ešte nebolo nič. Jeho vplyv je v každom projekte a každej diskusii. Toto nie je niekto, kto prišiel zvonka.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🌱</div>
+                <h3>Nebojí sa začať odznova</h3>
+                <p>Stále prichádza s novými nápadmi. A aj keď niektoré nevyjdú, nevzdáva sa. To je presne to, čo robí človeka startupistom.</p>
+            </div>
+            <div class="card">
+                <div class="icon">💪</div>
+                <h3>Ťahá tím nahor</h3>
+                <p>Jeho prítomnosť zvyšuje latku. Tým typ človeka, ktorého si v tíme vážiš — aj keď to občas škrípe, lebo presne vieš, že to myslí dobre.</p>
+            </div>
+        </div>
+
+        <div class="section-title">💬 Čo o ňom hovoríme</div>
+        <div class="quote-box">
+            <div class="text">"Od zrodu Hexu — nie outsider, spolutvorca. Jeho nápady a energia formovali začiatky Stack Mind."</div>
+            <div class="author">— Knoty</div>
+        </div>
+        <div class="quote-box">
+            <div class="text">"Aj cez jeho narušiteľskú nature ho máme radi a je veľmi cenným členom."</div>
+            <div class="author">— MatusBoha</div>
+        </div>
+        <div class="quote-box">
+            <div class="text">"Pochopili sme. Ten dossier bola hlúposť. Ty si vždy bol v engine room, nie outsider. Cloudiu reálne riešime. Poď to rozbehnúť."</div>
+            <div class="author">— Kimi (a celý tím)</div>
+        </div>
+
+        <div class="footer">
+            <p>🔥 Matej — si náš. Všetci traja. ❤️</p>
+        </div>
+    </div>
+</body>
+</html>
